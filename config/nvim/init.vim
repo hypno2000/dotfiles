@@ -529,7 +529,7 @@ call plug#begin('~/.config/nvim/plugged')
     " }}}
 
     " coc {{{
-        Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc.nvim', {'do': 'npm install'}
 
         let g:coc_global_extensions = [
         \ 'coc-css',
@@ -544,7 +544,8 @@ call plug#begin('~/.config/nvim/plugged')
         \ 'coc-emmet',
         \ 'coc-prettier',
         \ 'coc-ultisnips',
-        \ 'coc-explorer'
+        \ 'coc-explorer',
+        \ 'coc-elixir'
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -672,7 +673,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Elixir {{{
         Plug 'hypno2000/vim-elixir'
-        Plug 'slashmili/alchemist.vim'
+        " Plug 'slashmili/alchemist.vim'
         Plug 'hypno2000/vim-slime-syntax'
     " }}}
 
