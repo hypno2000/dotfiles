@@ -174,14 +174,14 @@ call plug#begin('~/.config/nvim/plugged')
     " remap esc
     inoremap jk <esc>
 
-	" return to normal mode in terminal
-	tnoremap jk <C-\><C-n>
+    " return to normal mode in terminal
+    tnoremap jk <C-\><C-n>
 
-	" shortcut to save
-	nmap <leader>, :w<cr>
+    " shortcut to save
+    nmap <leader>, :w<cr>
 
-	" set paste toggle
-	" set pastetoggle=<leader>v
+    " set paste toggle
+    " set pastetoggle=<leader>v
 
     " edit ~/.config/nvim/init.vim
     map <leader>ev :e! ~/.config/nvim/init.vim<cr>
@@ -191,15 +191,15 @@ call plug#begin('~/.config/nvim/plugged')
     " clear highlighted search
     noremap <space> :set hlsearch! hlsearch?<cr>
 
-	" activate spell-checking alternatives
-	" nmap ;s :set invspell spelllang=en<cr>
+    " activate spell-checking alternatives
+    " nmap ;s :set invspell spelllang=en<cr>
 
     " markdown to html
     nmap <leader>md :%!markdown --html4tags <cr>
 
-	" remove extra whitespace
-	" nmap <leader><space> :%s/\s\+$<cr>
-	" nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
+    " remove extra whitespace
+    " nmap <leader><space> :%s/\s\+$<cr>
+    " nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 
     inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
     inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
@@ -210,8 +210,8 @@ call plug#begin('~/.config/nvim/plugged')
     vmap < <gv
     vmap > >gv
 
-	" switch between current and last buffer
-	nmap <leader>` <c-^>
+    " switch between current and last buffer
+    nmap <leader>` <c-^>
     " nmap <leader>. <c-^>
 
     " enable . command in visual mode
@@ -464,13 +464,13 @@ call plug#begin('~/.config/nvim/plugged')
         Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~25%' }
 
-        if isdirectory(".git")
+        " if isdirectory(".git")
             " if in a git project, use :GFiles
             nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
-        else
+        " else
             " otherwise, use :FZF
             nmap <silent> <leader>t :FZF<cr>
-        endif
+        " endif
 
         nmap <silent> <leader>s :GFiles?<cr>
 
