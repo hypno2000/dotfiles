@@ -169,16 +169,19 @@ call plug#begin('~/.config/nvim/plugged')
 
 " General Mappings {{{
     " set a map leader for more key combos
-    let mapleader = ','
+    let mapleader = ' '
 
     " remap esc
     inoremap jk <esc>
 
-    " shortcut to save
-    nmap <leader>, :w<cr>
+	" return to normal mode in terminal
+	tnoremap jk <C-\><C-n>
 
-    " set paste toggle
-    set pastetoggle=<leader>v
+	" shortcut to save
+	nmap <leader>, :w<cr>
+
+	" set paste toggle
+	" set pastetoggle=<leader>v
 
     " edit ~/.config/nvim/init.vim
     map <leader>ev :e! ~/.config/nvim/init.vim<cr>
@@ -188,15 +191,15 @@ call plug#begin('~/.config/nvim/plugged')
     " clear highlighted search
     noremap <space> :set hlsearch! hlsearch?<cr>
 
-    " activate spell-checking alternatives
-    nmap ;s :set invspell spelllang=en<cr>
+	" activate spell-checking alternatives
+	" nmap ;s :set invspell spelllang=en<cr>
 
     " markdown to html
     nmap <leader>md :%!markdown --html4tags <cr>
 
-    " remove extra whitespace
-    nmap <leader><space> :%s/\s\+$<cr>
-    nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
+	" remove extra whitespace
+	" nmap <leader><space> :%s/\s\+$<cr>
+	" nmap <leader><space><space> :%s/\n\{2,}/\r\r/g<cr>
 
     inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
     inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
@@ -207,8 +210,9 @@ call plug#begin('~/.config/nvim/plugged')
     vmap < <gv
     vmap > >gv
 
-    " switch between current and last buffer
-    nmap <leader>. <c-^>
+	" switch between current and last buffer
+	nmap <leader>` <c-^>
+    " nmap <leader>. <c-^>
 
     " enable . command in visual mode
     vnoremap . :normal .<cr>
@@ -335,6 +339,28 @@ call plug#begin('~/.config/nvim/plugged')
 
     " detect indent style (tabs vs. spaces)
     Plug 'tpope/vim-sleuth'
+
+	" switch between single-line and multiline forms of code
+	Plug 'AndrewRadev/splitjoin.vim'
+
+	" show a preview popup on quickfix entries
+	Plug 'AndrewRadev/quickpeek.vim'
+	let g:quickpeek_auto = v:true
+
+	" switch segments of text with predefined replacements
+	Plug 'AndrewRadev/switch.vim'
+
+	" move function arguments (and other delimited-by-something items) left and right
+	Plug 'AndrewRadev/sideways.vim'
+
+	" dark powered asynchronous completion framework
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+	" Maintains a history of previous yanks, changes and deletes
+	Plug 'vim-scripts/YankRing.vim'
+
+	" Two char motion
+	Plug 'justinmk/vim-sneak'
 
     " Startify: Fancy startup screen for vim {{{
         Plug 'mhinz/vim-startify'
@@ -642,6 +668,12 @@ call plug#begin('~/.config/nvim/plugged')
     " JSON {{{
         Plug 'elzr/vim-json', { 'for': 'json' }
         let g:vim_json_syntax_conceal = 0
+    " }}}
+
+    " Elixir {{{
+        Plug 'hypno2000/vim-elixir'
+        Plug 'slashmili/alchemist.vim'
+        Plug 'hypno2000/vim-slime-syntax'
     " }}}
 
     Plug 'ekalinin/Dockerfile.vim'

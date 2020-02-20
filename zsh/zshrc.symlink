@@ -149,6 +149,11 @@ export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7)
 export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
+#export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:/usr/local/lib/python3.6/site-packages/"
+
+if [[ -d ~/Library/Python/3.6/bin ]]; then
+    export PATH=~/Library/Python/3.6/bin:$PATH
+fi
 
 if hash brew 2>/dev/null; then
     source `brew --prefix`/etc/profile.d/z.sh
