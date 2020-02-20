@@ -469,7 +469,7 @@ call plug#begin('~/.config/nvim/plugged')
             nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
         " else
             " otherwise, use :FZF
-            nmap <silent> <leader>t :FZF<cr>
+            " nmap <silent> <leader>t :FZF<cr>
         " endif
 
         nmap <silent> <leader>s :GFiles?<cr>
