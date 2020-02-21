@@ -92,9 +92,9 @@ call plug#begin('~/.config/nvim/plugged')
     set foldlevel=1
 
     " toggle invisible characters
-    set list
-    set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-    set showbreak=↪
+    " set list
+    " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+    " set showbreak=↪
 
     set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
     " switch cursor to line when in insert mode, and block when not
@@ -122,6 +122,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Load colorschemes
     Plug 'chriskempson/base16-vim'
     Plug 'joshdick/onedark.vim'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
     " LightLine {{{
         Plug 'itchyny/lightline.vim'
@@ -472,7 +473,8 @@ call plug#begin('~/.config/nvim/plugged')
             " nmap <silent> <leader>t :FZF<cr>
         " endif
 
-        nmap <silent> <leader>s :GFiles?<cr>
+        " nmap <silent> <leader>s :GFiles?<cr>
+        nmap <leader>s :w<cr>
 
         nmap <silent> <leader>r :Buffers<cr>
         nmap <silent> <leader>e :FZF<cr>
@@ -555,8 +557,8 @@ call plug#begin('~/.config/nvim/plugged')
         nmap <leader>f :CocCommand prettier.formatFile<cr>
 
         " coc-git
-        nmap [g <Plug>(coc-git-prevchunk)
-        nmap ]g <Plug>(coc-git-nextchunk)
+        nmap [c <Plug>(coc-git-prevchunk)
+        nmap ]c <Plug>(coc-git-nextchunk)
         nmap gs <Plug>(coc-git-chunkinfo)
         nmap gu :CocCommand git.chunkUndo<cr>
 
@@ -570,8 +572,8 @@ call plug#begin('~/.config/nvim/plugged')
         nmap <silent> gh <Plug>(coc-doHover)
 
         " diagnostics navigation
-        nmap <silent> [c <Plug>(coc-diagnostic-prev)
-        nmap <silent> ]c <Plug>(coc-diagnostic-next)
+        nmap <silent> [d <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
         " rename
         nmap <silent> <leader>rn <Plug>(coc-rename)
@@ -689,9 +691,10 @@ call plug#end()
         let base16colorspace=256
         source ~/.vimrc_background
     else
-        let g:onedark_termcolors=16
-        let g:onedark_terminal_italics=1
-        colorscheme onedark
+        " let g:onedark_termcolors=16
+        " let g:onedark_terminal_italics=1
+        " colorscheme onedark
+        colorscheme darktooth
     endif
     syntax on
     filetype plugin indent on
@@ -706,5 +709,15 @@ call plug#end()
     " highlight Type cterm=italic term=italic gui=italic
     highlight Normal ctermbg=none
 " }}}
+
+" Syntax debuging helper
+function! SynStack()
+    if !exists('*synstack')
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), "synIDattr(v:val, 'name')")
+endfunc
+
+nmap <leader>x :call SynStack()<CR>
 
 " vim:set foldmethod=marker foldlevel=0
