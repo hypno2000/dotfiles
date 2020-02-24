@@ -1,21 +1,21 @@
-" .vimrc / init.vim
-" The following vim/neovim configuration works for both Vim and NeoVim
+    :" .vimrc / init.vim
+    " The following vim/neovim configuration works for both Vim and NeoVim
 
-" ensure vim-plug is installed and then load it
-call functions#PlugLoad()
-call plug#begin('~/.config/nvim/plugged')
+    " ensure vim-plug is installed and then load it
+    call functions#PlugLoad()
+    call plug#begin('~/.config/nvim/plugged')
 
-" General {{{
-    " Abbreviations
-    abbr funciton function
-    abbr teh the
-    abbr tempalte template
-    abbr fitler filter
-    abbr cosnt const
-    abbr attribtue attribute
-    abbr attribuet attribute
+    " General {{{
+        " Abbreviations
+        abbr funciton function
+        abbr teh the
+        abbr tempalte template
+        abbr fitler filter
+        abbr cosnt const
+        abbr attribtue attribute
+        abbr attribuet attribute
 
-    set autoread " detect when a file is changed
+        set autoread " detect when a file is changed
 
     set history=1000 " change history to 1000
     set textwidth=120
@@ -123,52 +123,53 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'chriskempson/base16-vim'
     Plug 'joshdick/onedark.vim'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'fxn/vim-monochrome'
 
     " LightLine {{{
-        Plug 'itchyny/lightline.vim'
-        Plug 'nicknisi/vim-base16-lightline'
-        let g:lightline = {
-            \   'colorscheme': 'base16',
-            \   'active': {
-            \       'left': [ [ 'mode', 'paste' ],
-            \               [ 'gitbranch' ],
-            \               [ 'readonly', 'filetype', 'filename' ]],
-            \       'right': [ [ 'percent' ], [ 'lineinfo' ],
-            \               [ 'fileformat', 'fileencoding' ],
-            \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
-            \   },
-            \   'component_expand': {
-            \   },
-            \   'component_type': {
-            \       'readonly': 'error',
-            \       'linter_warnings': 'warning',
-            \       'linter_errors': 'error'
-            \   },
-            \   'component_function': {
-            \       'fileencoding': 'helpers#lightline#fileEncoding',
-            \       'filename': 'helpers#lightline#fileName',
-            \       'fileformat': 'helpers#lightline#fileFormat',
-            \       'filetype': 'helpers#lightline#fileType',
-            \       'gitbranch': 'helpers#lightline#gitBranch',
-            \       'cocstatus': 'coc#status',
-            \       'currentfunction': 'helpers#lightline#currentFunction',
-            \       'gitblame': 'helpers#lightline#gitBlame'
-            \   },
-            \   'tabline': {
-            \       'left': [ [ 'tabs' ] ],
-            \       'right': [ [ 'close' ] ]
-            \   },
-            \   'tab': {
-            \       'active': [ 'filename', 'modified' ],
-            \       'inactive': [ 'filename', 'modified' ],
-            \   },
-            \   'separator': { 'left': '', 'right': '' },
-            \   'subseparator': { 'left': '', 'right': '' }
-        \ }
+    Plug 'itchyny/lightline.vim'
+    Plug 'nicknisi/vim-base16-lightline'
+    let g:lightline = {
+                \   'colorscheme': 'seoul256',
+                \   'active': {
+                \       'left': [ [ 'mode', 'paste' ],
+                \               [ 'gitbranch' ],
+                \               [ 'readonly', 'filetype', 'filename' ]],
+                \       'right': [ [ 'percent' ], [ 'lineinfo' ],
+                \               [ 'fileformat', 'fileencoding' ],
+                \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
+                \   },
+                \   'component_expand': {
+                \   },
+                \   'component_type': {
+                \       'readonly': 'error',
+                \       'linter_warnings': 'warning',
+                \       'linter_errors': 'error'
+                \   },
+                \   'component_function': {
+                \       'fileencoding': 'helpers#lightline#fileEncoding',
+                \       'filename': 'helpers#lightline#fileName',
+                \       'fileformat': 'helpers#lightline#fileFormat',
+                \       'filetype': 'helpers#lightline#fileType',
+                \       'gitbranch': 'helpers#lightline#gitBranch',
+                \       'cocstatus': 'coc#status',
+                \       'currentfunction': 'helpers#lightline#currentFunction',
+                \       'gitblame': 'helpers#lightline#gitBlame'
+                \   },
+                \   'tabline': {
+                \       'left': [ [ 'tabs' ] ],
+                \       'right': [ [ 'close' ] ]
+                \   },
+                \   'tab': {
+                \       'active': [ 'filename', 'modified' ],
+                \       'inactive': [ 'filename', 'modified' ],
+                \   },
+                \   'separator': { 'left': '', 'right': '' },
+                \   'subseparator': { 'left': '', 'right': '' }
+                \ }
     " }}}
-" }}}
+    " }}}
 
-" General Mappings {{{
+    " General Mappings {{{
     " set a map leader for more key combos
     let mapleader = ' '
 
@@ -285,9 +286,13 @@ call plug#begin('~/.config/nvim/plugged')
     nmap <leader>4 <Plug>HiInterestingWord4
     nmap <leader>5 <Plug>HiInterestingWord5
     nmap <leader>6 <Plug>HiInterestingWord6
-" }}}
+    " }}}
 
-" AutoGroups {{{
+    " faster window resize
+    nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 4/3)<cr>
+    nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 3/4)<cr>
+
+    " AutoGroups {{{
     " file type specific settings
     augroup configgroup
         autocmd!
@@ -304,9 +309,11 @@ call plug#begin('~/.config/nvim/plugged')
         autocmd FileType qf wincmd J
         autocmd FileType qf nmap <buffer> q :q<cr>
     augroup END
-" }}}
+    " }}}
 
-" General Functionality {{{
+    packadd cfilter
+
+    " General Functionality {{{
     " better terminal integration
     " substitute, search, and abbreviate multiple variants of a word
     Plug 'tpope/vim-abolish'
@@ -341,60 +348,63 @@ call plug#begin('~/.config/nvim/plugged')
     " detect indent style (tabs vs. spaces)
     Plug 'tpope/vim-sleuth'
 
-	" switch between single-line and multiline forms of code
-	Plug 'AndrewRadev/splitjoin.vim'
+    " switch between single-line and multiline forms of code
+    Plug 'AndrewRadev/splitjoin.vim'
 
-	" show a preview popup on quickfix entries
-	Plug 'AndrewRadev/quickpeek.vim'
-	let g:quickpeek_auto = v:true
+    " show a preview popup on quickfix entries
+    Plug 'AndrewRadev/quickpeek.vim'
+    let g:quickpeek_auto = v:true
 
-	" switch segments of text with predefined replacements
-	Plug 'AndrewRadev/switch.vim'
+    " switch segments of text with predefined replacements
+    Plug 'AndrewRadev/switch.vim'
 
-	" move function arguments (and other delimited-by-something items) left and right
-	Plug 'AndrewRadev/sideways.vim'
+    " move function arguments (and other delimited-by-something items) left and right
+    Plug 'AndrewRadev/sideways.vim'
 
-	" dark powered asynchronous completion framework
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " dark powered asynchronous completion framework
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-	" Maintains a history of previous yanks, changes and deletes
-	Plug 'vim-scripts/YankRing.vim'
+    " Maintains a history of previous yanks, changes and deletes
+    Plug 'vim-scripts/YankRing.vim'
 
-	" Two char motion
-	Plug 'justinmk/vim-sneak'
+    " Two char motion
+    Plug 'justinmk/vim-sneak'
+
+    " Color hex codes and color names
+    Plug 'chrisbra/Colorizer'
 
     " Startify: Fancy startup screen for vim {{{
-        Plug 'mhinz/vim-startify'
+    Plug 'mhinz/vim-startify'
 
-        " Don't change to directory when selecting a file
-        let g:startify_files_number = 5
-        let g:startify_change_to_dir = 0
-        let g:startify_custom_header = [ ]
-        let g:startify_relative_path = 1
-        let g:startify_use_env = 1
+    " Don't change to directory when selecting a file
+    let g:startify_files_number = 5
+    let g:startify_change_to_dir = 0
+    let g:startify_custom_header = [ ]
+    let g:startify_relative_path = 1
+    let g:startify_use_env = 1
 
-        " Custom startup list, only show MRU from current directory/project
-        let g:startify_lists = [
-        \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-        \  { 'type': function('helpers#startify#listcommits'), 'header': [ 'Recent Commits' ] },
-        \  { 'type': 'sessions',  'header': [ 'Sessions' ]       },
-        \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      },
-        \  { 'type': 'commands',  'header': [ 'Commands' ]       },
-        \ ]
+    " Custom startup list, only show MRU from current directory/project
+    let g:startify_lists = [
+                \  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+                \  { 'type': function('helpers#startify#listcommits'), 'header': [ 'Recent Commits' ] },
+                \  { 'type': 'sessions',  'header': [ 'Sessions' ]       },
+                \  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      },
+                \  { 'type': 'commands',  'header': [ 'Commands' ]       },
+                \ ]
 
-        let g:startify_commands = [
-        \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
-        \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
-        \ ]
+    let g:startify_commands = [
+                \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+                \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+                \ ]
 
-        let g:startify_bookmarks = [
-            \ { 'c': '~/.config/nvim/init.vim' },
-            \ { 'g': '~/.gitconfig' },
-            \ { 'z': '~/.zshrc' }
-        \ ]
+    let g:startify_bookmarks = [
+                \ { 'c': '~/.config/nvim/init.vim' },
+                \ { 'g': '~/.gitconfig' },
+                \ { 'z': '~/.zshrc' }
+                \ ]
 
-        autocmd User Startified setlocal cursorline
-        nmap <leader>st :Startify<cr>
+    autocmd User Startified setlocal cursorline
+    nmap <leader>st :Startify<cr>
     " }}}
 
     " Close buffers but keep splits
@@ -402,62 +412,62 @@ call plug#begin('~/.config/nvim/plugged')
     nmap <leader>b :Bdelete<cr>
 
     " Writing in vim {{{{
-        Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/goyo.vim'
 
-        autocmd! User GoyoEnter nested call helpers#goyo#enter()
-        autocmd! User GoyoLeave nested call helpers#goyo#leave()
+    autocmd! User GoyoEnter nested call helpers#goyo#enter()
+    autocmd! User GoyoLeave nested call helpers#goyo#leave()
     " }}}
 
     " context-aware pasting
     Plug 'sickill/vim-pasta'
 
     " NERDTree {{{
-        Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-        Plug 'Xuyuanp/nerdtree-git-plugin'
-        Plug 'ryanoasis/vim-devicons'
-        Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-        let g:WebDevIconsOS = 'Darwin'
-        let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-        let g:DevIconsEnableFoldersOpenClose = 1
-        let g:DevIconsEnableFolderExtensionPatternMatching = 1
-        let NERDTreeDirArrowExpandable = "\u00a0" " make arrows invisible
-        let NERDTreeDirArrowCollapsible = "\u00a0" " make arrows invisible
-        let NERDTreeNodeDelimiter = "\u263a" " smiley face
+    Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    let g:WebDevIconsOS = 'Darwin'
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+    let g:DevIconsEnableFoldersOpenClose = 1
+    let g:DevIconsEnableFolderExtensionPatternMatching = 1
+    let NERDTreeDirArrowExpandable = "\u00a0" " make arrows invisible
+    let NERDTreeDirArrowCollapsible = "\u00a0" " make arrows invisible
+    let NERDTreeNodeDelimiter = "\u263a" " smiley face
 
-        augroup nerdtree
-            autocmd!
-            autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
-            autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
-        augroup END
+    augroup nerdtree
+        autocmd!
+        autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
+        autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
+    augroup END
 
-        " Toggle NERDTree
-        function! ToggleNerdTree()
-            if @% != "" && @% !~ "Startify" && (!exists("g:NERDTree") || (g:NERDTree.ExistsForTab() && !g:NERDTree.IsOpen()))
-                :NERDTreeFind
-            else
-                :NERDTreeToggle
-            endif
-        endfunction
-        " toggle nerd tree
-        nmap <silent> <leader>n :call ToggleNerdTree()<cr>
-        " find the current file in nerdtree without needing to reload the drawer
-        nmap <silent> <leader>y :NERDTreeFind<cr>
+    " Toggle NERDTree
+    function! ToggleNerdTree()
+        if @% != "" && @% !~ "Startify" && (!exists("g:NERDTree") || (g:NERDTree.ExistsForTab() && !g:NERDTree.IsOpen()))
+            :NERDTreeFind
+        else
+            :NERDTreeToggle
+        endif
+    endfunction
+    " toggle nerd tree
+    nmap <silent> <leader>n :call ToggleNerdTree()<cr>
+    " find the current file in nerdtree without needing to reload the drawer
+    nmap <silent> <leader>y :NERDTreeFind<cr>
 
-        let NERDTreeShowHidden=1
-        " let NERDTreeDirArrowExpandable = '▷'
-        " let NERDTreeDirArrowCollapsible = '▼'
-        let g:NERDTreeIndicatorMapCustom = {
-        \ "Modified"  : "✹",
-        \ "Staged"    : "✚",
-        \ "Untracked" : "✭",
-        \ "Renamed"   : "➜",
-        \ "Unmerged"  : "═",
-        \ "Deleted"   : "✖",
-        \ "Dirty"     : "✗",
-        \ "Clean"     : "✔︎",
-        \ 'Ignored'   : '☒',
-        \ "Unknown"   : "?"
-        \ }
+    let NERDTreeShowHidden=1
+    " let NERDTreeDirArrowExpandable = '▷'
+    " let NERDTreeDirArrowCollapsible = '▼'
+    let g:NERDTreeIndicatorMapCustom = {
+                \ "Modified"  : "✹",
+                \ "Staged"    : "✚",
+                \ "Untracked" : "✭",
+                \ "Renamed"   : "➜",
+                \ "Unmerged"  : "═",
+                \ "Deleted"   : "✖",
+                \ "Dirty"     : "✗",
+                \ "Clean"     : "✔︎",
+                \ 'Ignored'   : '☒',
+                \ "Unknown"   : "?"
+                \ }
     " }}}
 
     " FZF {{{
@@ -466,11 +476,11 @@ call plug#begin('~/.config/nvim/plugged')
         let g:fzf_layout = { 'down': '~25%' }
 
         " if isdirectory(".git")
-            " if in a git project, use :GFiles
-            nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
+        " if in a git project, use :GFiles
+        nmap <silent> <leader>t :GitFiles --cached --others --exclude-standard<cr>
         " else
-            " otherwise, use :FZF
-            " nmap <silent> <leader>t :FZF<cr>
+        " otherwise, use :FZF
+        " nmap <silent> <leader>t :FZF<cr>
         " endif
 
         " nmap <silent> <leader>s :GFiles?<cr>
@@ -503,18 +513,44 @@ call plug#begin('~/.config/nvim/plugged')
         \  'options': '-m -x +s',
         \  'down':    '40%'})
 
+        nmap <silent> <leader>f :GGrep<cr>
+
+        command! -bang -nargs=* GGrep
+        \ call fzf#vim#grep(
+        \   'git grep --line-number '.shellescape(<q-args>), 0,
+        \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 4..'},'up:60%')
+        \           : fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 4..'},'right:50%'),
+        \   <bang>0)
+
+        " CTRL-A CTRL-Q to select all and build quickfix list
+        function! s:build_quickfix_list(lines)
+            call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+            copen
+            cc
+        endfunction
+
+        let g:fzf_action = {
+        \ 'ctrl-q': function('s:build_quickfix_list'),
+        \ 'ctrl-t': 'tab split',
+        \ 'ctrl-x': 'split',
+        \ 'ctrl-v': 'vsplit' }
+
+        let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
         command! -bang -nargs=* Find call fzf#vim#grep(
             \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
             \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+
         command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%', '?'), <bang>0)
+
         command! -bang -nargs=? -complete=dir GitFiles
             \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview('right:50%', '?'), <bang>0)
     " }}}
 
     " vim-fugitive {{{
         Plug 'tpope/vim-fugitive'
-        nmap <silent> <leader>gs :Gstatus<cr>
+        nmap <silent> <leader>gs :G:status<cr>
         nmap <leader>ge :Gedit<cr>
         nmap <silent><leader>gr :Gread<cr>
         nmap <silent><leader>gb :Gblame<cr>
@@ -554,7 +590,7 @@ call plug#begin('~/.config/nvim/plugged')
 
         " coc-prettier
         command! -nargs=0 Prettier :CocCommand prettier.formatFile
-        nmap <leader>f :CocCommand prettier.formatFile<cr>
+        " nmap <leader>f :CocCommand prettier.formatFile<cr>
 
         " coc-git
         nmap [c <Plug>(coc-git-prevchunk)
@@ -579,8 +615,8 @@ call plug#begin('~/.config/nvim/plugged')
         nmap <silent> <leader>rn <Plug>(coc-rename)
 
         " Remap for format selected region
-        xmap <leader>f  <Plug>(coc-format-selected)
-        nmap <leader>f  <Plug>(coc-format-selected)
+        " xmap <leader>f  <Plug>(coc-format-selected)
+        " nmap <leader>f  <Plug>(coc-format-selected)
 
         " organize imports
         command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
