@@ -172,3 +172,5 @@ exe 'hi elixirBlockDefinition guifg='s:keyword'  gui=bold'
 exe 'hi elixirOperator guifg='s:keyword
 exe 'hi elixirMacroCall guifg='s:builtin
 exe 'hi elixirMacroCallBlock guifg='s:builtin
+exe 'hi elixirDocTest guifg='s:comment
+exe 'hi elixirDocStringDelimiter guifg='s:comment
