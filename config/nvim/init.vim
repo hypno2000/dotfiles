@@ -368,7 +368,7 @@
     Plug 'vim-scripts/YankRing.vim'
 
     " Two char motion
-    Plug 'justinmk/vim-sneak'
+    " Plug 'justinmk/vim-sneak'
 
     " Color hex codes and color names
     Plug 'chrisbra/Colorizer'
