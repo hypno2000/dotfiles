@@ -26,6 +26,7 @@
     "explorer.file.column.git.icon.untracked": "?",
     "explorer.file.column.git.icon.modified": "✹",
     "explorer.file.column.git.icon.ignored": "☒",
+    "explorer.previewAction.onHover": false,
     "explorer.openAction.changeDirectory": false,
     "eslint.enable": false
 }
