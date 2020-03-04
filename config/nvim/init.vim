@@ -238,6 +238,14 @@
     vnoremap ∆ :m '>+1<cr>gv=gv
     vnoremap ˚ :m '<-2<cr>gv=gv
 
+    " move args mappings
+    " ˙ is <A-h> on macOS
+    " ¬ is <A-l> on macOS
+    nnoremap ˙ :SidewaysLeft<cr>
+    nnoremap ¬ :SidewaysRight<cr>
+    inoremap ˙ <Esc>:SidewaysLeft<cr>i
+    inoremap ¬ <Esc>:SidewaysRight<cr>i
+
     vnoremap $( <esc>`>a)<esc>`<i(<esc>
     vnoremap $[ <esc>`>a]<esc>`<i[<esc>
     vnoremap ${ <esc>`>a}<esc>`<i{<esc>
