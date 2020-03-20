@@ -29,6 +29,7 @@
     "explorer.openAction.for.directory": "expandOrCollapse",
     "explorer.previewAction.onHover": false,
     "explorer.keyMappings": {
+<<<<<<< HEAD
         "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
     },
     "eslint.enable": false,
@@ -64,4 +65,9 @@
             "sourceName": "shellcheck"
         }
     }
+=======
+        "<cr>": ["expandable?", "expandOrCollapse", "open"]
+    },
+    "eslint.enable": false
+>>>>>>> fix removed explorer cd setting, disable onhover
 }
