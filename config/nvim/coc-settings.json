@@ -68,6 +68,13 @@
 =======
         "<cr>": ["expandable?", "expandOrCollapse", "open"]
     },
+<<<<<<< HEAD
     "eslint.enable": false
 >>>>>>> fix removed explorer cd setting, disable onhover
+=======
+    "eslint.enable": false,
+    "diagnostic-languageserver.filetypes": {
+        "sh": "shellcheck"
+    }
+>>>>>>> add coc-diagnostic plugin, shellcheck linting
 }

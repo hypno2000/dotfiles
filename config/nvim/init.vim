@@ -641,7 +641,11 @@
         \ 'coc-prettier',
         \ 'coc-ultisnips',
         \ 'coc-explorer',
+<<<<<<< HEAD
         \ 'coc-elixir'
+=======
+        \ 'coc-diagnostic'
+>>>>>>> add coc-diagnostic plugin, shellcheck linting
         \ ]
 
         autocmd CursorHold * silent call CocActionAsync('highlight')
