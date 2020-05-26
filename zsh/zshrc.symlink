@@ -216,9 +216,6 @@ alias ta='tmux attach'
 alias tls='tmux ls'
 alias tat='tmux attach -t'
 alias tns='tmux new-session -s'
-<<<<<<< HEAD
-# fnm
-eval "$(fnm env --multi)"
 export RUST_BACKTRACE=1
-=======
->>>>>>> prevent reload! from repeating fnm path fixes #123
+
+alias lpath='echo $PATH | tr ":" "\n"' # list the PATH separated by new lines
