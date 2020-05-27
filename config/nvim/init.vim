@@ -591,7 +591,7 @@
         let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
         command! -bang -nargs=* Find call fzf#vim#grep(
-            \ 'rg --column --line-number --no-heading --follow --color=always '.<q-args>, 1,
+            \ 'rg --column --line-number --no-heading --follow --color=always -- '.shellescape(<q-args>).' || true', 1,
             \ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
         command! -bang -nargs=? -complete=dir Files
