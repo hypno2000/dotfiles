@@ -1,8 +1,12 @@
 set -g default-command "login-shell"
 
+# set -g default-terminal 'screen-256color'
+# set -ga terminal-overrides ',*256col*:Tc'
+
 # tmux display things in 256 colors
-set -g default-terminal "tmux-256color"
-set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
+# set -g default-terminal "tmux-256colsor"
+# set -ga terminal-overrides ",alacritty:Tc"
+# set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 
 set -g history-limit 20000
 
@@ -45,6 +49,9 @@ setw -g pane-base-index 1
 set-option -g set-titles on
 set-option -g set-titles-string "#T - #W"
 # set-window-option -g automatic-rename on
+set-option -g status-interval 5
+set-option -g automatic-rename on
+set-option -g automatic-rename-format '#{b:pane_current_path}'
 
 ######################
 #### Key Bindings ####
@@ -96,4 +103,42 @@ bind C-v run "tmux set-buffer $(reattach-to-user-namespace pbpaste); tmux paste-
 ### Color & Style Settings ###
 ##############################
 
-source ~/.dotfiles/tmux/base16.sh
+# source ~/.dotfiles/tmux/base16.sh
+
+set -g status-bg "colour234"
+set -g message-command-style fg="colour235"
+set -g status-justify "left"
+set -g status-left-length "100"
+set -g status "on"
+set -g pane-active-border-style fg="colour234",bg="colour234"
+set -g status-right-length "100"
+set -g message-style fg="colour234",bg="colour250"
+set -g message-command-style fg="colour237",bg="colour234"
+set -g pane-border-style fg="colour234"
+setw -g window-status-style fg="colour237"
+setw -g window-status-activity-style bg="colour234",fg="colour237"
+setw -g window-status-separator ""
+setw -g window-status-style bg="colour234"
+set -g status-left "#[fg=colour244,bg=colour232] #S #[fg=colour232,bg=colour234,nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=colour237,bg=colour234]#[fg=colour248,bg=colour237] %H:%M "
+setw -g window-status-format " #[fg=colour238,bg=colour234] #I #[fg=colour241,bg=colour234]#W  "
+setw -g window-status-current-format "#[fg=colour234,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour242,bg=colour237] #I #[fg=colour252,bg=colour237]#W #[fg=colour237,bg=colour234,nobold,nounderscore,noitalics]"
+
+###############
+### PLUGINS ###
+###############
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Solarized theme
+set -g @plugin 'seebi/tmux-colors-solarized'
+set -g @colors-solarized 'dark'
+
+# Terminal type configuration
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

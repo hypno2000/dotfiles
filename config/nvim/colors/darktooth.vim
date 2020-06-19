@@ -36,8 +36,9 @@ let g:colors_name = "darktooth"
 
 
 " Define reusable colorvariables.
-let s:bg="#282828"
-let s:fg="#fdf4c1"
+" let s:bg="#282828"
+let s:bg="#222222"
+let s:fg="#faf1be"
 let s:fg2="#e9e0b2"
 let s:fg3="#d5cda2"
 let s:fg4="#c0b993"

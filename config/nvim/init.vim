@@ -1,5 +1,8 @@
     :" .vimrc / init.vim
     " The following vim/neovim configuration works for both Vim and NeoVim
+   
+    " Fish doesn't play all that well with others
+    set shell=/usr/local/bin/fish
 
     " ensure vim-plug is installed and then load it
     call functions#PlugLoad()
@@ -18,7 +21,7 @@
         set autoread " detect when a file is changed
 
     set history=1000 " change history to 1000
-    set textwidth=120
+    " set textwidth=120
 
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
     set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -54,7 +57,7 @@
 
 " Appearance {{{
     set number " show line numbers
-    set wrap " turn on line wrapping
+    set wrap! " turn on line wrapping
     set wrapmargin=8 " wrap lines when coming within n characters from side
     set linebreak " set soft wrapping
     set showbreak=… " show ellipsis at breaking
@@ -68,7 +71,7 @@
     set showcmd " show incomplete commands
     set noshowmode " don't show which mode disabled for PowerLine
     set wildmode=list:longest " complete files like a shell
-    set shell=$SHELL
+    " set shell=$SHELL
     set cmdheight=1 " command bar height
     set title " set terminal title
     set showmatch " show matching braces
@@ -108,6 +111,7 @@
     endif
 
     " enable 24 bit color support if supported
+    set termguicolors
     if (has("termguicolors"))
         if (!(has("nvim")))
             let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -124,48 +128,76 @@
     Plug 'joshdick/onedark.vim'
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'fxn/vim-monochrome'
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'jacoborus/tender.vim'
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'shinchu/lightline-gruvbox.vim'
+    Plug 'lifepillar/vim-gruvbox8'
+    Plug 'nanotech/jellybeans.vim'
+
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     " LightLine {{{
     Plug 'itchyny/lightline.vim'
     Plug 'nicknisi/vim-base16-lightline'
+
+    " Lightline
+    " \ 'colorscheme': 'gruvbox',
+    " let g:lightline = {
+    "     \ 'active': {
+    "     \   'left': [ [ 'mode', 'paste' ],
+    "     \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    "     \ },
+    "     \ 'component_function': {
+    "     \   'filename': 'LightlineFilename',
+    "     \   'cocstatus': 'coc#status'
+    "     \ },
+    "     \ }
+    " function! LightlineFilename()
+    " return expand('%:t') !=# '' ? @% : '[No Name]'
+    " endfunction
     let g:lightline = {
-                \   'colorscheme': 'seoul256',
-                \   'active': {
-                \       'left': [ [ 'mode', 'paste' ],
-                \               [ 'gitbranch' ],
-                \               [ 'readonly', 'filetype', 'filename' ]],
-                \       'right': [ [ 'percent' ], [ 'lineinfo' ],
-                \               [ 'fileformat', 'fileencoding' ],
-                \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
-                \   },
-                \   'component_expand': {
-                \   },
-                \   'component_type': {
-                \       'readonly': 'error',
-                \       'linter_warnings': 'warning',
-                \       'linter_errors': 'error'
-                \   },
-                \   'component_function': {
-                \       'fileencoding': 'helpers#lightline#fileEncoding',
-                \       'filename': 'helpers#lightline#fileName',
-                \       'fileformat': 'helpers#lightline#fileFormat',
-                \       'filetype': 'helpers#lightline#fileType',
-                \       'gitbranch': 'helpers#lightline#gitBranch',
-                \       'cocstatus': 'coc#status',
-                \       'currentfunction': 'helpers#lightline#currentFunction',
-                \       'gitblame': 'helpers#lightline#gitBlame'
-                \   },
-                \   'tabline': {
-                \       'left': [ [ 'tabs' ] ],
-                \       'right': [ [ 'close' ] ]
-                \   },
-                \   'tab': {
-                \       'active': [ 'filename', 'modified' ],
-                \       'inactive': [ 'filename', 'modified' ],
-                \   },
-                \   'separator': { 'left': '', 'right': '' },
-                \   'subseparator': { 'left': '', 'right': '' }
-                \ }
+        \   'colorscheme': 'base16',
+        \   'active': {
+        \       'left': [ [ 'mode', 'paste' ],
+        \               [ 'gitbranch' ],
+        \               [ 'readonly', 'filetype', 'filename' ]],
+        \       'right': [ [ 'percent' ], [ 'lineinfo' ],
+        \               [ 'fileformat', 'fileencoding' ],
+        \               [ 'gitblame', 'currentfunction',  'cocstatus', 'linter_errors', 'linter_warnings' ]]
+        \   },
+        \   'component_expand': {
+        \   },
+        \   'component_type': {
+        \       'readonly': 'error',
+        \       'linter_warnings': 'warning',
+        \       'linter_errors': 'error'
+        \   },
+        \   'component_function': {
+        \       'fileencoding': 'helpers#lightline#fileEncoding',
+        \       'filename': 'helpers#lightline#fileName',
+        \       'fileformat': 'helpers#lightline#fileFormat',
+        \       'filetype': 'helpers#lightline#fileType',
+        \       'gitbranch': 'helpers#lightline#gitBranch',
+        \       'cocstatus': 'coc#status',
+        \       'currentfunction': 'helpers#lightline#currentFunction',
+        \       'gitblame': 'helpers#lightline#gitBlame'
+        \   },
+        \   'tabline': {
+        \       'left': [ [ 'tabs' ] ],
+        \       'right': [ [ 'close' ] ]
+        \   },
+        \   'tab': {
+        \       'active': [ 'filename', 'modified' ],
+        \       'inactive': [ 'filename', 'modified' ],
+        \   },
+        \   'separator': { 'left': '', 'right': '' },
+        \   'subseparator': { 'left': '', 'right': '' }
+    \ }
+
+    " Use auocmd to force lightline update.
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
     " }}}
     " }}}
 
@@ -307,8 +339,8 @@
 
         " automatically resize panes on resize
         autocmd VimResized * exe 'normal! \<c-w>='
-        autocmd BufWritePost .vimrc,.vimrc.local,init.vim source %
-        autocmd BufWritePost .vimrc.local source %
+        autocmd BufWritePost .vimrc,.vimrc.local,init.vim ++nested source %
+        autocmd BufWritePost .vimrc.local ++nested source %
         " save all files on focus lost, ignoring warnings about untitled buffers
         autocmd FocusLost * silent! wa
 
@@ -316,6 +348,8 @@
         " when there are multiple windows open
         autocmd FileType qf wincmd J
         autocmd FileType qf nmap <buffer> q :q<cr>
+
+        autocmd FileType elixir colorscheme darktooth
     augroup END
     " }}}
 
@@ -383,6 +417,21 @@
 
     " Startify: Fancy startup screen for vim {{{
     Plug 'mhinz/vim-startify'
+
+    " indent-level based motion: [% [- [+ [= ]= ]+ ]- ]%
+    Plug 'jeetsukumaran/vim-indentwise'
+
+    " Make the yanked region apparent!
+    Plug 'machakann/vim-highlightedyank'
+
+    " text object representing lines of code at the same indent level: ii ai iI aI
+    Plug 'michaeljsmith/vim-indent-object'
+
+    " Text-object like motion for arguments: aa, ia 
+    Plug 'vim-scripts/argtextobj.vim'
+
+    " CamelCase or snake_case motion through words: ci,w
+    Plug 'bkad/CamelCaseMotion'
 
     " Don't change to directory when selecting a file
     let g:startify_files_number = 5
@@ -565,6 +614,7 @@
 
         Plug 'tpope/vim-rhubarb' " hub extension for fugitive
         Plug 'sodapopcan/vim-twiggy'
+        Plug 'rbong/vim-flog'
     " }}}
 
     " UltiSnips {{{
@@ -625,7 +675,13 @@
         " Remap for format selected region
         " xmap <leader>f  <Plug>(coc-format-selected)
         " nmap <leader>f  <Plug>(coc-format-selected)
+       
+        " Add `:Format` command to format current buffer.
+        command! -nargs=0 Format :call CocAction('format')
 
+        " Add `:Fold` command to fold current buffer.
+        command! -nargs=? Fold :call CocAction('fold', <f-args>)
+        
         " organize imports
         command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -719,11 +775,22 @@
 
     " Elixir {{{
         Plug 'hypno2000/vim-elixir'
+        " Plug 'elixir-editors/vim-elixir'
         " Plug 'slashmili/alchemist.vim'
         Plug 'hypno2000/vim-slime-syntax'
+        Plug 'mhinz/vim-mix-format'
+        let g:mix_format_on_save = 1
+    " }}}
+    
+    " Elixir {{{
+        Plug 'ziglang/zig.vim'
     " }}}
 
     Plug 'ekalinin/Dockerfile.vim'
+    Plug 'dag/vim-fish'
+    Plug 'cespare/vim-toml'
+    Plug 'stephpy/vim-yaml'
+    Plug 'rust-lang/rust.vim'
 " }}}
 
 call plug#end()
@@ -738,7 +805,11 @@ call plug#end()
         " let g:onedark_termcolors=16
         " let g:onedark_terminal_italics=1
         " colorscheme onedark
-        colorscheme darktooth
+        " colorscheme darktooth
+        " colorscheme solarized8
+        " colorscheme tender
+        colorscheme base16-gruvbox-dark-hard
+        " colorscheme gruvbox8_hard
     endif
     syntax on
     filetype plugin indent on
