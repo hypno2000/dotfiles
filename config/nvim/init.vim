@@ -331,6 +331,10 @@
     nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 4/3)<cr>
     nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 3/4)<cr>
 
+    " open current buffer in a new tab
+    nmap <silent> gTT :tab sb<cr>
+" }}}
+
     " AutoGroups {{{
     " file type specific settings
     augroup configgroup
