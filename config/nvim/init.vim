@@ -396,6 +396,11 @@
     " show a preview popup on quickfix entries
     Plug 'AndrewRadev/quickpeek.vim'
     let g:quickpeek_auto = v:true
+    let g:startify_commands = [
+    \   { 'up': [ 'Update Plugins', ':PlugUpdate' ] },
+    \   { 'ug': [ 'Upgrade Plugin Manager', ':PlugUpgrade' ] },
+    \   { 'uc': [ 'Update CoC Plugins', ':CocUpdate' ] },
+    \ ]
 
     " switch segments of text with predefined replacements
     Plug 'AndrewRadev/switch.vim'
