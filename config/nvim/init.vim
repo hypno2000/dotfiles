@@ -685,7 +685,7 @@
         nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
         " rename
-        nmap <silent> <leader>rn <Plug>(coc-rename)
+        nmap <silent> <leader>c <Plug>(coc-rename)
 
         " Remap for format selected region
         " xmap <leader>f  <Plug>(coc-format-selected)
