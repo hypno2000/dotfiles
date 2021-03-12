@@ -97,6 +97,7 @@
     " toggle invisible characters
     " set list
     " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+    set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 
     set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
     " switch cursor to line when in insert mode, and block when not
@@ -325,7 +326,6 @@
     nmap <leader>4 <Plug>HiInterestingWord4
     nmap <leader>5 <Plug>HiInterestingWord5
     nmap <leader>6 <Plug>HiInterestingWord6
-    " }}}
 
     " faster window resize
     nnoremap <silent> <leader>+ :exe "resize " . (winheight(0) * 4/3)<cr>
@@ -486,7 +486,7 @@
     Plug 'ryanoasis/vim-devicons'
 
     " FZF {{{
-        Plug '/usr/local/opt/fzf'
+        Plug $HOMEBREW_PREFIX . '/opt/fzf'
         Plug 'junegunn/fzf.vim'
         let g:fzf_layout = { 'down': '~25%' }
 
@@ -670,6 +670,12 @@
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
         inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+        if has('nvim')
+            inoremap <silent><expr> <c-space> coc#refresh()
+        else
+            inoremap <silent><expr> <c-@> coc#refresh();
+        endif
 
         function! s:check_back_space() abort
         let col = col('.') - 1

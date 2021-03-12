@@ -1,8 +1,5 @@
 set -g default-command "/usr/local/bin/zsh"
 
-# set -g default-terminal 'screen-256color'
-# set -ga terminal-overrides ',*256col*:Tc'
-
 # tmux display things in 256 colors
 # set -g default-terminal "tmux-256colsor"
 # set -ga terminal-overrides ",alacritty:Tc"

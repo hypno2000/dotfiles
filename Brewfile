@@ -29,7 +29,10 @@ if OS.mac?
 
     # Browsers
     cask "firefox"
+<<<<<<< HEAD
     cask "google-chrome"
+=======
+>>>>>>> upstream/master
 
     # Fonts
     cask "font-fira-code"
