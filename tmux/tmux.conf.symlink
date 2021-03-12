@@ -1,4 +1,4 @@
-set -g default-command "login-shell"
+set -g default-command "/usr/local/bin/zsh"
 
 # set -g default-terminal 'screen-256color'
 # set -ga terminal-overrides ',*256col*:Tc'
